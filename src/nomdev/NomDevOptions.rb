@@ -78,10 +78,10 @@ class NomDevOptions
     # Platform-dependent style used for help output for 'example usage'
     if platform["macosx"]
       nomdev_cmd = "$ ./nomdev.rb"
-      nomdev_prefix = "~/Library/Frameworks"
-    else # Assume MS DOS prompt
+      nomdev_prefix = "#{ENV['HOME']}/Library/Frameworks"
+    else # Assume MS Windows
       nomdev_cmd = "nomdev.rb"
-      nomdev_prefix = "C:/Users#{ENV['HOME']}/libs/nomlib"
+      nomdev_prefix = "#{ENV['HOME']}/libs/nomlib"
     end
 
     opts = OptionParser.new do |opt|
@@ -214,9 +214,9 @@ EOF
 
     opts.separator "" # Newline
 
-    opts.separator "#{nomdev_cmd} gen --arch x64 --build_dir build-x64 --debug --examples"
-    opts.separator "#{nomdev_cmd} build --build_dir build-x64"
-    opts.separator "#{nomdev_cmd} install --prefix #{nomdev_prefix}"
+    opts.separator "#{nomdev_cmd} gen --arch x64 --build_dir build-x64 --prefix #{nomdev_prefix} --no-debug --no-examples"
+    opts.separator "#{nomdev_cmd} build"
+    opts.separator "#{nomdev_cmd} install"
 
     # Additional help reference invocation;
     # OptParse does not support these non-POSIX arguments!
