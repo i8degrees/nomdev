@@ -67,8 +67,8 @@ end # platform
 # Graceful exit; do not close out of our console windows until we have been
 # given a chance to read the error messages!
 #
-# FIXME: I'm unwisely assuming that we are being ran inside an interactive
-# terminal (user controlled) unless we are on the Windows platform.
+# FIXME: I'm assuming that we are being ran inside an interactive
+# terminal (AKA, you control it) unless we are on the Windows platform.
 def quit
   if platform["windows"]
     system "pause"
@@ -80,6 +80,17 @@ def run( cmd, *args, opts )
   if opts.dry_run
     puts( cmd, *args )
   else
-    system( cmd, *args ) or quit
+    system( cmd, *args )
+
+    if $?.exitstatus != 0
+      puts "\n[nomdev]"
+      print "Error: "
+      %x{cmd *args}
+      puts "Exit Code: #{$?.exitstatus}"
+      puts "Command: #{cmd}"
+      puts "Arguments: "
+      puts *args
+      quit
+    end
   end
 end
