@@ -80,6 +80,6 @@ class CMakeGenerator
 
   def generate
     @generator.generate
-  end # genera
+  end # generate
 
 end

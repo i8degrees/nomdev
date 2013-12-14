@@ -37,10 +37,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # References #
 
-* [GetoptLong API Docs](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/getoptlong/rdoc/GetoptLong.html)
 * [OptionParser How To](http://ruby.about.com/od/advancedruby/a/optionparser2.htm)
-http://www.stelfox.net/blog/2012/12/02/rubys-option-parser-a-more-complete-example/
+* [OptionParser Developer API Docs](http://ruby-doc.org/stdlib-1.9.2/libdoc/optparse/rdoc/OptionParser.html)
 * [How do I make a command-line tool in Ruby?](http://rubylearning.com/blog/2011/01/03/how-do-i-make-a-command-line-tool-in-ruby/)
+* [Ruby's Option Parser - A More Complete Example](http://www.stelfox.net/blog/2012/12/02/rubys-option-parser-a-more-complete-example/)
+* [GetoptLong API Docs](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/getoptlong/rdoc/GetoptLong.html)
 
 =end
 
