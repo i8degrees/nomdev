@@ -63,7 +63,7 @@ class NomDevOptions
     options.build_examples = false
     options.build_tests = false
     options.build_docs = false
-    options.install_prefix = "#{NOMDEV_WORKING_DIRECTORY}/#{options.build_dir}"
+    options.install_prefix = nil
     options.developer = false
     options.dry_run = false
 
@@ -177,8 +177,8 @@ EOF
 
     opts.separator "" # Newline
 
-    opts.on( '-i', '--prefix INSTALL_PREFIX', "Installation path", "The default is: #{NOMDEV_WORKING_DIRECTORY}/#{options.build_dir}" ) do |install_prefix|
-      options.install_prefix = install_prefix
+    opts.on( '-i', '--prefix [INSTALL_PREFIX]', "Installation path", "The default is to let CMake handle things" ) do |install_prefix|
+      options.install_prefix = install_prefix || nil
     end
 
     opts.separator "" # Newline
