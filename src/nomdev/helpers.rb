@@ -89,8 +89,10 @@ def run( cmd, *args, opts )
       puts "Exit Code: #{$?.exitstatus}"
       puts "Command: #{cmd}"
       puts "Arguments: "
-      puts *args
+      args.each do |arg|
+        puts arg
+      end
       quit
-    end
+    end # exit status != 0
   end
-end
+end # run
