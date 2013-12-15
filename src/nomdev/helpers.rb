@@ -83,9 +83,19 @@ def run( cmd, *args, opts )
     system( cmd, *args )
 
     if $?.exitstatus != 0
+      # Windows platform:
+      #
+      # If we do not trap the CTRL-C interrupt here, our shell
+      # (cmd.exe) will break badly on us upon if we try to interrupt;
+      #
+      # "The process tried to write to a nonexistent pipe" is the message I get
+      # on my Windows 7 box.
+      #std_trap = trap("INT") { exit 1 }
+
       puts "\n[nomdev]"
       print "Error: "
-      %x{cmd *args}
+      %x{cmd *args} if ! platform["windows"]
+      #trap("INT", std_trap) # OK to restore the default CTRL-C handler now
       puts "Exit Code: #{$?.exitstatus}"
       puts "Command: #{cmd}"
       puts "Arguments: "
