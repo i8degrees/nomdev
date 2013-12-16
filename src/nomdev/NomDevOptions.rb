@@ -68,6 +68,9 @@ class NomDevOptions
     options.developer = false
     options.dry_run = false
 
+    # FIXME: We cannot rely on these parameters being set when we are not being
+    # ran from an interactive shell -- such as the case when we are using
+    # nomdev.sublime-build
     if platform["macosx"]
       options.threads = ENV['MAKEFLAGS']
     elsif platform["windows"]

@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # TODO #
 
-- [ ] Stub
+- [ ] Rename to GNUMakeFiles ..?
 
 # References #
 
@@ -54,7 +54,9 @@ module Build
     end
 
     def build
-      run( "make", @options.threads, @options )
+      # NOTE: If @options.threads is nil, this will cause make to not limit the
+      # number of jobs (threads) it may create
+      run( "make", "-j#{@options.threads}", @options )
     end
 
     def clean
