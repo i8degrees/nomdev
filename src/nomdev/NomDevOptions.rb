@@ -72,11 +72,11 @@ class NomDevOptions
     # ran from an interactive shell -- such as the case when we are using
     # nomdev.sublime-build
     if platform["macosx"]
-      options.threads = ENV['MAKEFLAGS']
+      options.threads = ENV['MAKEFLAGS'] # BSD make
     elsif platform["windows"]
       options.threads = ENV['NUMBER_OF_PROCESSORS']
     else
-      options.threads = ENV['MAKEFLAGS']
+      options.threads = ENV['MAKEFLAGS'] # Assume GNU make
     end
 
     # Platform-dependent style used for help output for 'example usage'

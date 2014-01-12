@@ -54,9 +54,23 @@ module Build
     end
 
     def build
-      # NOTE: If @options.threads is nil, this will cause make to not limit the
-      # number of jobs (threads) it may create
-      run( "make", "-j#{@options.threads}", @options )
+      # NOTE: In order to allow passage of --threads switch without an ugly '-j'
+      # switch appended, we must sanitize the threads option variable:
+      #
+      # If our number of jobs/threads value does not includes the '-j' switch
+      # sanitize it first by adding '-j' to the number.
+      if @options.threads != nil
+        if ! @options.threads.include? "-j" # NOT include '-j'
+          append_switch = "-j" # GNU/BSD make
+          @options.threads = append_switch + @options.threads
+        end
+      else
+        # Limit the number of make threads to 1 if options.threads is nil --
+        # otherwise make is permitted to use 100% of every core we have.
+        @options.threads = "-j1"
+      end
+
+      run( "make", "#{@options.threads}", @options )
     end
 
     def clean
