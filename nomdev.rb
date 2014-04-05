@@ -89,7 +89,7 @@ case command
   when "uninstall", "remove"
     build_system = BuildSystem.new( options )
     build_system.uninstall
-  when "test", "tests"
+  when "test"
     build_system = BuildSystem.new( options )
     build_system.test
   when "wipe"
