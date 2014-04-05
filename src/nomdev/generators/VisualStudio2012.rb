@@ -72,16 +72,12 @@ module Generator
 
       args << "-DEXAMPLES=on" if @options.build_examples || @options.developer
 
-      if @options.build_tests #|| @options.developer
-        puts "Error: '--tests' not implemented."
-        quit
-      end
-
       if @options.build_docs #|| @options.developer
         puts "Error: '--docs' not implemented."
         quit
       end
 
+      args << "-DNOM_BUILD_TESTS=on" if @options.build_tests || @options.developer
       args << "-DCMAKE_INSTALL_PREFIX=#{@options.install_prefix}" if @options.install_prefix
 
       run( "cmake", *args, "..", @options )

@@ -89,8 +89,8 @@ module Build
       run( "make docs", @options )
     end
 
-    def tests
-      run( "make tests", @options )
+    def test
+      run( "make test", @options )
     end
 
     def analyze

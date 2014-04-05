@@ -62,7 +62,7 @@ class NomDevOptions
     options.build_dir = "build"
     options.build_debug = false
     options.build_examples = false
-    options.build_tests = false
+    options.build_tests = true
     options.build_docs = false
     options.install_prefix = nil
     options.developer = false

@@ -89,6 +89,9 @@ case command
   when "uninstall", "remove"
     build_system = BuildSystem.new( options )
     build_system.uninstall
+  when "test", "tests"
+    build_system = BuildSystem.new( options )
+    build_system.test
   when "wipe"
     # TODO: make me safer
     pwd = NOMDEV_WORKING_DIRECTORY

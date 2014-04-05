@@ -65,13 +65,8 @@ module Generator
         args << "-DDEBUG_TRACE=on"
       end
 
-      if @options.build_tests #|| @options.developer
-        puts "Error: '--tests' not implemented."
-        quit
-      end
-
       args << "-DEXAMPLES=on" if @options.build_examples || @options.developer
-      #args << "-DTESTS=on" if @options.build_tests #|| @options.developer
+      args << "-DNOM_BUILD_TESTS=on" if @options.build_tests || @options.developer
       args << "-DDOCS=on" if @options.build_docs #|| @options.developer
       args << "-DCMAKE_INSTALL_PREFIX=#{@options.install_prefix}" if @options.install_prefix
 

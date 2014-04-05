@@ -85,6 +85,10 @@ class BuildSystem
     @build_system.uninstall
   end
 
+  def test
+    @build_system.test
+  end
+
   def docs
     @build_system.docs
   end

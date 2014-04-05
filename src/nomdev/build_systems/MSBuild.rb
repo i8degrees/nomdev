@@ -112,9 +112,12 @@ module Build
       quit
     end
 
-    def tests
-      puts "TODO: implement me!"
-      quit
+    def test
+      proj = [ "RUN_TESTS.vcxproj" ]
+      @args << "/t:build"
+      for project in proj
+        run( "msbuild", *@args, project, @options )
+      end
     end
 
     def analyze
