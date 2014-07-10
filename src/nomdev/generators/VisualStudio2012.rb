@@ -66,8 +66,7 @@ module Generator
 
       if @options.build_debug || @options.developer
         args << "-DDEBUG=on"
-        #args << "-DDEBUG_ASSERT=on"
-        #args << "-DDEBUG_TRACE=on"
+        args << "-DDEBUG_ASSERT=on"
       end
 
       args << "-DEXAMPLES=on" if @options.build_examples || @options.developer
