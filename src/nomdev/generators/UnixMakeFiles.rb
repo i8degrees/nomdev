@@ -69,6 +69,21 @@ module Generator
       args << "-DDOCS=on" if @options.build_docs #|| @options.developer
       args << "-DCMAKE_INSTALL_PREFIX=#{@options.install_prefix}" if @options.install_prefix
 
+      if @options.args
+        p_args = @options.args.split(' ')
+
+        i = 0
+        while i < p_args.length do
+          args << p_args[i]
+          i = i + 1
+        end
+
+        if NOMDEV_DEBUG
+          args << "#{@options.args}"
+          puts "#{args}"
+        end
+      end
+
       run( "cmake", *args, "..", @options )
     end # generate
 

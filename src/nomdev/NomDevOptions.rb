@@ -67,6 +67,7 @@ class NomDevOptions
     options.install_prefix = nil
     options.developer = false
     options.dry_run = false
+    options.args = String.new
 
     # FIXME: We cannot rely on these parameters being set when we are not being
     # ran from an interactive shell -- such as the case when we are using
@@ -214,6 +215,10 @@ EOF
 
     opts.separator "" # Newline
 
+    opts.on('--args ARGUMENTS', "Pass additional arguments to the generator") do |arg|
+      options.args = arg
+    end
+
     opts.separator "Example Usage: "
 
     opts.separator "" # Newline
@@ -221,6 +226,12 @@ EOF
     opts.separator "#{nomdev_cmd} gen --arch x64 --build_dir build-x64 --prefix #{nomdev_prefix} --no-debug --no-examples"
     opts.separator "#{nomdev_cmd} build"
     opts.separator "#{nomdev_cmd} install"
+
+    opts.separator "" # Newline
+
+    opts.separator "Usage example of passing additional arguments:"
+    opts.separator "#{nomdev_cmd} gen --dev --args -DENABLE_CUSTOM_FEATURE=on"
+    opts.separator "#{nomdev_cmd} gen --dev --args \"-DENABLE_CUSTOM_FEATURE1=on -DENABLE_CUSTOM_FEATURE2=off\""
 
     # Additional help reference invocation;
     # OptParse does not support these non-POSIX arguments!
