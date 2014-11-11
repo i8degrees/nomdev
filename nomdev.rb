@@ -121,7 +121,7 @@ case command
     args << "--ignored=#{NOMDEV_WORKING_DIRECTORY}/.cloc_ignored.log" if NOMDEV_DEBUG
     args << "--out=#{loc_filename}"
     args << '--yaml'
-    args << '--exclude-dir=scale2x,hqx,jsoncpp,build,extra,third-party,tmp,wiki'
+    args << '--exclude-dir=scale2x,hqx,jsoncpp,build,extra,third-party,tmp,wiki,Resources'
     args << "#{NOMDEV_WORKING_DIRECTORY}"
 
     if ! run( 'cloc', *args, options )
